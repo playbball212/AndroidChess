@@ -25,6 +25,16 @@ public class SmartTileView extends View {
     private RectF rectf;
     private RectF rectf3;
 
+    public String getTypeOfPiece() {
+        return typeOfPiece;
+    }
+
+    public void setTypeOfPiece(String typeOfPiece) {
+        this.typeOfPiece = typeOfPiece;
+    }
+
+    private String typeOfPiece;
+
     public String getPositionNumber() {
         return positionNumber;
     }
@@ -63,13 +73,14 @@ public class SmartTileView extends View {
 
     }
 
-    public SmartTileView(Context context , Paint boxPaint, Bitmap pieceImage , CommunicateBackToActivity activity , String positionNumber) {
+    public SmartTileView(Context context , Paint boxPaint, Bitmap pieceImage , CommunicateBackToActivity activity , String positionNumber , String typeOfPiece) {
         super(context);
         this.pieceImage = pieceImage;
         rectf = new RectF(rect);
         this.boxPaint = boxPaint;
         this.positionNumber = positionNumber;
         this.activity = activity;
+        this.typeOfPiece = typeOfPiece;
         p = new Paint();
         g = new Paint();
         interestRateText = new Paint();
