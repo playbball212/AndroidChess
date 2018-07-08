@@ -16,7 +16,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements SmartTileView.CommunicateBackToActivity{
+public class MainActivity extends AppCompatActivity implements SmartTileView.CommunicateBackToActivity {
 
     private FrameLayout f1;
     private FrameLayout f2;
@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements SmartTileView.Com
 
     private FrameLayout f15;
     private FrameLayout f16;
-
 
 
     private FrameLayout f17;
@@ -118,10 +117,8 @@ public class MainActivity extends AppCompatActivity implements SmartTileView.Com
     private FrameLayout f64;
 
 
-
     private Paint player1;
     private Paint player2;
-
 
 
     @Override
@@ -150,7 +147,6 @@ public class MainActivity extends AppCompatActivity implements SmartTileView.Com
         f7 = (FrameLayout) findViewById(R.id.f7);
 
         f8 = (FrameLayout) findViewById(R.id.f8);
-
 
 
         f9 = (FrameLayout) findViewById(R.id.f9);
@@ -185,7 +181,6 @@ public class MainActivity extends AppCompatActivity implements SmartTileView.Com
         f23 = (FrameLayout) findViewById(R.id.f23);
 
         f24 = (FrameLayout) findViewById(R.id.f24);
-
 
 
         f25 = (FrameLayout) findViewById(R.id.f25);
@@ -273,246 +268,241 @@ public class MainActivity extends AppCompatActivity implements SmartTileView.Com
         f64 = (FrameLayout) findViewById(R.id.f64);
 
 
-
         // Row 1 Black Rook
-        Bitmap blackRook  = getBitmapByPieceName("blackrook" , this);
-        SmartTileView tileView = new SmartTileView(f1.getContext() , player1 , blackRook , this , "8A" , ChessPieceConstants.BLACK_ROOK);
+        Bitmap blackRook = getBitmapByPieceName("blackrook", this);
+        SmartTileView tileView = new SmartTileView(f1.getContext(), player1, blackRook, this, "8A", ChessPieceConstants.BLACK_ROOK);
         currentState.add(tileView);
 
         // Row 1 Black Knight
-        Bitmap blackKnight = getBitmapByPieceName("blackknight" , this);
-        SmartTileView tileView2 = new SmartTileView(f2.getContext() , player2 , blackKnight, this , "8B" , ChessPieceConstants.BLACK_KNIGHT);
+        Bitmap blackKnight = getBitmapByPieceName("blackknight", this);
+        SmartTileView tileView2 = new SmartTileView(f2.getContext(), player2, blackKnight, this, "8B", ChessPieceConstants.BLACK_KNIGHT);
         currentState.add(tileView2);
 
         // Row 1 Black Bishop
-        Bitmap blackBishop = getBitmapByPieceName("blackbishop" , this);
-        SmartTileView tileView3 = new SmartTileView(f3.getContext() , player1 , blackBishop, this , "8C" , ChessPieceConstants.BLACK_BISHOP);
+        Bitmap blackBishop = getBitmapByPieceName("blackbishop", this);
+        SmartTileView tileView3 = new SmartTileView(f3.getContext(), player1, blackBishop, this, "8C", ChessPieceConstants.BLACK_BISHOP);
         currentState.add(tileView3);
 
         // Row 1 Black Queen
-        Bitmap blackQueen = getBitmapByPieceName("blackqueen" , this);
-        SmartTileView tileView4 = new SmartTileView(f4.getContext() , player2 , blackQueen, this , "8D" , ChessPieceConstants.BLACK_QUEEN);
+        Bitmap blackQueen = getBitmapByPieceName("blackqueen", this);
+        SmartTileView tileView4 = new SmartTileView(f4.getContext(), player2, blackQueen, this, "8D", ChessPieceConstants.BLACK_QUEEN);
         currentState.add(tileView4);
 
         // Row 1 Black King
-        Bitmap blackKing = getBitmapByPieceName("blackKing" , this);
-        SmartTileView tileView5 = new SmartTileView(f5.getContext() , player1 , blackKing, this , "8E" , ChessPieceConstants.BLACK_KING);
+        Bitmap blackKing = getBitmapByPieceName("blackKing", this);
+        SmartTileView tileView5 = new SmartTileView(f5.getContext(), player1, blackKing, this, "8E", ChessPieceConstants.BLACK_KING);
         currentState.add(tileView5);
 
 
-        SmartTileView tileView6 = new SmartTileView(f6.getContext() , player2 , blackBishop, this , "8F" , ChessPieceConstants.BLACK_BISHOP);
+        SmartTileView tileView6 = new SmartTileView(f6.getContext(), player2, blackBishop, this, "8F", ChessPieceConstants.BLACK_BISHOP);
         currentState.add(tileView6);
 
-        SmartTileView tileView7 = new SmartTileView(f7.getContext() , player1 , blackKnight, this , "8G" , ChessPieceConstants.BLACK_KNIGHT);
+        SmartTileView tileView7 = new SmartTileView(f7.getContext(), player1, blackKnight, this, "8G", ChessPieceConstants.BLACK_KNIGHT);
         currentState.add(tileView7);
 
-        SmartTileView tileView8 = new SmartTileView(f8.getContext() , player2 , blackRook, this , "8H" , ChessPieceConstants.BLACK_ROOK);
+        SmartTileView tileView8 = new SmartTileView(f8.getContext(), player2, blackRook, this, "8H", ChessPieceConstants.BLACK_ROOK);
         currentState.add(tileView8);
 
 
         // Row 2
-        Bitmap blackpawn = getBitmapByPieceName("blackpawn" , this);
+        Bitmap blackpawn = getBitmapByPieceName("blackpawn", this);
 
-        SmartTileView tileView9 = new SmartTileView(f9.getContext() , player2 , blackpawn, this , "7A" , ChessPieceConstants.BLACK_PAWN);
+        SmartTileView tileView9 = new SmartTileView(f9.getContext(), player2, blackpawn, this, "7A", ChessPieceConstants.BLACK_PAWN);
         currentState.add(tileView9);
 
-        SmartTileView tileView10 = new SmartTileView(f10.getContext() , player1 , blackpawn, this , "7B" , ChessPieceConstants.BLACK_PAWN);
+        SmartTileView tileView10 = new SmartTileView(f10.getContext(), player1, blackpawn, this, "7B", ChessPieceConstants.BLACK_PAWN);
         currentState.add(tileView10);
 
-        SmartTileView tileView11 = new SmartTileView(f11.getContext() , player2 , blackpawn, this , "7C" , ChessPieceConstants.BLACK_PAWN);
+        SmartTileView tileView11 = new SmartTileView(f11.getContext(), player2, blackpawn, this, "7C", ChessPieceConstants.BLACK_PAWN);
         currentState.add(tileView11);
 
-        SmartTileView tileView12 = new SmartTileView(f12.getContext() , player1 , blackpawn, this , "7D" , ChessPieceConstants.BLACK_PAWN);
+        SmartTileView tileView12 = new SmartTileView(f12.getContext(), player1, blackpawn, this, "7D", ChessPieceConstants.BLACK_PAWN);
         currentState.add(tileView12);
 
-        SmartTileView tileView13 = new SmartTileView(f13.getContext() , player2 , blackpawn, this , "7E" , ChessPieceConstants.BLACK_PAWN);
+        SmartTileView tileView13 = new SmartTileView(f13.getContext(), player2, blackpawn, this, "7E", ChessPieceConstants.BLACK_PAWN);
         currentState.add(tileView13);
 
-        SmartTileView tileView14 = new SmartTileView(f14.getContext() , player1 , blackpawn, this , "7F" , ChessPieceConstants.BLACK_PAWN);
+        SmartTileView tileView14 = new SmartTileView(f14.getContext(), player1, blackpawn, this, "7F", ChessPieceConstants.BLACK_PAWN);
         currentState.add(tileView14);
 
-        SmartTileView tileView15 = new SmartTileView(f15.getContext() , player2 , blackpawn, this , "7G" , ChessPieceConstants.BLACK_PAWN);
+        SmartTileView tileView15 = new SmartTileView(f15.getContext(), player2, blackpawn, this, "7G", ChessPieceConstants.BLACK_PAWN);
         currentState.add(tileView15);
-        SmartTileView tileView16 = new SmartTileView(f16.getContext() , player1 , blackpawn, this , "7H" , ChessPieceConstants.BLACK_PAWN);
+        SmartTileView tileView16 = new SmartTileView(f16.getContext(), player1, blackpawn, this, "7H", ChessPieceConstants.BLACK_PAWN);
         currentState.add(tileView16);
 
 
         // Row 3
-        SmartTileView tileView17 = new SmartTileView(f17.getContext() , player1 , null, this , "6A" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView17 = new SmartTileView(f17.getContext(), player1, null, this, "6A", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView17);
 
-        SmartTileView tileView18 = new SmartTileView(f18.getContext() , player2 , null, this , "6B" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView18 = new SmartTileView(f18.getContext(), player2, null, this, "6B", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView18);
 
-        SmartTileView tileView19 = new SmartTileView(f19.getContext() , player1 , null, this , "6C" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView19 = new SmartTileView(f19.getContext(), player1, null, this, "6C", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView19);
 
-        SmartTileView tileView20 = new SmartTileView(f20.getContext() , player2 , null, this , "6D" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView20 = new SmartTileView(f20.getContext(), player2, null, this, "6D", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView20);
 
-        SmartTileView tileView21 = new SmartTileView(f21.getContext() , player1 , null, this , "6E" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView21 = new SmartTileView(f21.getContext(), player1, null, this, "6E", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView21);
 
-        SmartTileView tileView22 = new SmartTileView(f22.getContext() , player2 , null, this , "6F" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView22 = new SmartTileView(f22.getContext(), player2, null, this, "6F", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView22);
 
-        SmartTileView tileView23 = new SmartTileView(f23.getContext() , player1 , null, this , "6G" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView23 = new SmartTileView(f23.getContext(), player1, null, this, "6G", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView23);
 
-        SmartTileView tileView24 = new SmartTileView(f24.getContext() , player2 , null, this , "6H" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView24 = new SmartTileView(f24.getContext(), player2, null, this, "6H", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView24);
 
 
-
         // Row 4
-        SmartTileView tileView25 = new SmartTileView(f25.getContext() , player2 , null, this , "5A" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView25 = new SmartTileView(f25.getContext(), player2, null, this, "5A", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView25);
 
-        SmartTileView tileView26 = new SmartTileView(f26.getContext() , player1 , null, this , "5B" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView26 = new SmartTileView(f26.getContext(), player1, null, this, "5B", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView26);
 
-        SmartTileView tileView27 = new SmartTileView(f27.getContext() , player2, null, this , "5C" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView27 = new SmartTileView(f27.getContext(), player2, null, this, "5C", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView27);
 
-        SmartTileView tileView28 = new SmartTileView(f28.getContext() , player1, null, this , "5D" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView28 = new SmartTileView(f28.getContext(), player1, null, this, "5D", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView28);
 
-        SmartTileView tileView29 = new SmartTileView(f29.getContext() , player2, null, this , "5E" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView29 = new SmartTileView(f29.getContext(), player2, null, this, "5E", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView29);
 
-        SmartTileView tileView30 = new SmartTileView(f30.getContext() , player1, null, this , "5F" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView30 = new SmartTileView(f30.getContext(), player1, null, this, "5F", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView30);
 
-        SmartTileView tileView31 = new SmartTileView(f31.getContext() , player2, null, this , "5G" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView31 = new SmartTileView(f31.getContext(), player2, null, this, "5G", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView31);
 
-        SmartTileView tileView32 = new SmartTileView(f32.getContext() , player1, null, this , "5H" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView32 = new SmartTileView(f32.getContext(), player1, null, this, "5H", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView32);
 
 
-
         // Row 5
-        SmartTileView tileView33 = new SmartTileView(f33.getContext() , player1, null, this , "4A" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView33 = new SmartTileView(f33.getContext(), player1, null, this, "4A", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView33);
 
-        SmartTileView tileView34 = new SmartTileView(f34.getContext() , player2, null, this , "4B" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView34 = new SmartTileView(f34.getContext(), player2, null, this, "4B", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView34);
 
-        SmartTileView tileView35 = new SmartTileView(f35.getContext() , player1, null, this  , "4C" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView35 = new SmartTileView(f35.getContext(), player1, null, this, "4C", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView35);
 
-        SmartTileView tileView36 = new SmartTileView(f36.getContext() , player2, null, this , "4D" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView36 = new SmartTileView(f36.getContext(), player2, null, this, "4D", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView36);
 
-        SmartTileView tileView37 = new SmartTileView(f37.getContext() , player1, null, this , "4E" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView37 = new SmartTileView(f37.getContext(), player1, null, this, "4E", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView37);
 
-        SmartTileView tileView38 = new SmartTileView(f38.getContext() , player2, null, this , "4F" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView38 = new SmartTileView(f38.getContext(), player2, null, this, "4F", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView38);
 
-        SmartTileView tileView39 = new SmartTileView(f39.getContext() , player1, null, this , "4G" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView39 = new SmartTileView(f39.getContext(), player1, null, this, "4G", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView39);
 
-        SmartTileView tileView40 = new SmartTileView(f40.getContext() , player2, null, this , "4H" , ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView40 = new SmartTileView(f40.getContext(), player2, null, this, "4H", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView40);
 
 
         // Row 6
-        SmartTileView tileView41 = new SmartTileView(f41.getContext() , player2, null, this , "3A", ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView41 = new SmartTileView(f41.getContext(), player2, null, this, "3A", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView41);
 
-        SmartTileView tileView42 = new SmartTileView(f42.getContext() , player1, null, this , "3B", ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView42 = new SmartTileView(f42.getContext(), player1, null, this, "3B", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView42);
 
-        SmartTileView tileView43 = new SmartTileView(f43.getContext() , player2, null, this , "3C", ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView43 = new SmartTileView(f43.getContext(), player2, null, this, "3C", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView43);
 
-        SmartTileView tileView44 = new SmartTileView(f44.getContext() , player1, null, this , "3D", ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView44 = new SmartTileView(f44.getContext(), player1, null, this, "3D", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView44);
 
-        SmartTileView tileView45 = new SmartTileView(f45.getContext() , player2, null, this , "3E", ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView45 = new SmartTileView(f45.getContext(), player2, null, this, "3E", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView45);
 
-        SmartTileView tileView46 = new SmartTileView(f46.getContext() , player1, null, this , "3F", ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView46 = new SmartTileView(f46.getContext(), player1, null, this, "3F", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView46);
 
-        SmartTileView tileView47 = new SmartTileView(f47.getContext() , player2, null, this , "3G", ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView47 = new SmartTileView(f47.getContext(), player2, null, this, "3G", ChessPieceConstants.EMPTY_PIECE);
         currentState.add(tileView47);
 
-        SmartTileView tileView48 = new SmartTileView(f48.getContext() , player1, null, this , "3H", ChessPieceConstants.EMPTY_PIECE);
+        SmartTileView tileView48 = new SmartTileView(f48.getContext(), player1, null, this, "3H", ChessPieceConstants.EMPTY_PIECE);
 
 
-
-        Bitmap whitepawn = getBitmapByPieceName("whitepawn" , this);
+        Bitmap whitepawn = getBitmapByPieceName("whitepawn", this);
 
         // Row 7
-        SmartTileView tileView49 = new SmartTileView(f49.getContext() , player1, whitepawn , this , "2A" , ChessPieceConstants.WHITE_PAWN);
+        SmartTileView tileView49 = new SmartTileView(f49.getContext(), player1, whitepawn, this, "2A", ChessPieceConstants.WHITE_PAWN);
         currentState.add(tileView49);
 
-        SmartTileView tileView50 = new SmartTileView(f50.getContext() , player2 , whitepawn, this , "2B", ChessPieceConstants.WHITE_PAWN);
+        SmartTileView tileView50 = new SmartTileView(f50.getContext(), player2, whitepawn, this, "2B", ChessPieceConstants.WHITE_PAWN);
         currentState.add(tileView50);
 
-        SmartTileView tileView51 = new SmartTileView(f51.getContext() , player1 , whitepawn, this , "2C", ChessPieceConstants.WHITE_PAWN);
+        SmartTileView tileView51 = new SmartTileView(f51.getContext(), player1, whitepawn, this, "2C", ChessPieceConstants.WHITE_PAWN);
         currentState.add(tileView51);
 
-        SmartTileView tileView52 = new SmartTileView(f52.getContext() , player2, whitepawn, this , "2D", ChessPieceConstants.WHITE_PAWN);
+        SmartTileView tileView52 = new SmartTileView(f52.getContext(), player2, whitepawn, this, "2D", ChessPieceConstants.WHITE_PAWN);
         currentState.add(tileView52);
 
-        SmartTileView tileView53 = new SmartTileView(f53.getContext() , player1, whitepawn, this , "2E", ChessPieceConstants.WHITE_PAWN);
+        SmartTileView tileView53 = new SmartTileView(f53.getContext(), player1, whitepawn, this, "2E", ChessPieceConstants.WHITE_PAWN);
         currentState.add(tileView53);
 
-        SmartTileView tileView54 = new SmartTileView(f54.getContext() , player2, whitepawn, this , "2F", ChessPieceConstants.WHITE_PAWN);
+        SmartTileView tileView54 = new SmartTileView(f54.getContext(), player2, whitepawn, this, "2F", ChessPieceConstants.WHITE_PAWN);
         currentState.add(tileView54);
 
-        SmartTileView tileView55 = new SmartTileView(f55.getContext() , player1, whitepawn, this , "2G", ChessPieceConstants.WHITE_PAWN);
+        SmartTileView tileView55 = new SmartTileView(f55.getContext(), player1, whitepawn, this, "2G", ChessPieceConstants.WHITE_PAWN);
         currentState.add(tileView55);
 
-        SmartTileView tileView56 = new SmartTileView(f56.getContext() , player2, whitepawn, this , "2H", ChessPieceConstants.WHITE_PAWN);
+        SmartTileView tileView56 = new SmartTileView(f56.getContext(), player2, whitepawn, this, "2H", ChessPieceConstants.WHITE_PAWN);
         currentState.add(tileView56);
 
 
         // Row 8 white castle
-        Bitmap whiteRook = getBitmapByPieceName("whiterook" , this);
-        Bitmap whitequeen = getBitmapByPieceName("whitequeen" , this);
+        Bitmap whiteRook = getBitmapByPieceName("whiterook", this);
+        Bitmap whitequeen = getBitmapByPieceName("whitequeen", this);
 
-        SmartTileView tileView57 = new SmartTileView(f57.getContext() , player2 , whiteRook, this , "1A" , ChessPieceConstants.WHITE_ROOK);
+        SmartTileView tileView57 = new SmartTileView(f57.getContext(), player2, whiteRook, this, "1A", ChessPieceConstants.WHITE_ROOK);
         currentState.add(tileView57);
 
 
         // White Knight
-        Bitmap whiteknight = getBitmapByPieceName("whiteknight" , this);
+        Bitmap whiteknight = getBitmapByPieceName("whiteknight", this);
 
-        SmartTileView tileView58 = new SmartTileView(f58.getContext() , player1 , whiteknight, this , "1B" , ChessPieceConstants.WHITE_KNIGHT);
+        SmartTileView tileView58 = new SmartTileView(f58.getContext(), player1, whiteknight, this, "1B", ChessPieceConstants.WHITE_KNIGHT);
         currentState.add(tileView58);
 
 
         // White Bishop
-        Bitmap whitebishop = getBitmapByPieceName("whitebishop" , this);
+        Bitmap whitebishop = getBitmapByPieceName("whitebishop", this);
 
-        SmartTileView tileView59 = new SmartTileView(f59.getContext() , player2 , whitebishop, this , "1C" , ChessPieceConstants.WHITE_BISHOP);
+        SmartTileView tileView59 = new SmartTileView(f59.getContext(), player2, whitebishop, this, "1C", ChessPieceConstants.WHITE_BISHOP);
         currentState.add(tileView59);
 
 
-
         //White King
-        Bitmap whiteking = getBitmapByPieceName("whiteking" , this);
+        Bitmap whiteking = getBitmapByPieceName("whiteking", this);
 
-        SmartTileView tileView60 = new SmartTileView(f60.getContext() , player1 , whitequeen, this , "1D" , ChessPieceConstants.WHITE_QUEEN);
+        SmartTileView tileView60 = new SmartTileView(f60.getContext(), player1, whitequeen, this, "1D", ChessPieceConstants.WHITE_QUEEN);
         currentState.add(tileView60);
 
         // White Queen
 
-        SmartTileView tileView61 = new SmartTileView(f61.getContext() , player2 , whiteking, this , "1E" , ChessPieceConstants.WHITE_KING);
+        SmartTileView tileView61 = new SmartTileView(f61.getContext(), player2, whiteking, this, "1E", ChessPieceConstants.WHITE_KING);
         currentState.add(tileView61);
 
         //
-        SmartTileView tileView62 = new SmartTileView(f62.getContext() , player1  , whitebishop, this , "1F" , ChessPieceConstants.WHITE_QUEEN);
+        SmartTileView tileView62 = new SmartTileView(f62.getContext(), player1, whitebishop, this, "1F", ChessPieceConstants.WHITE_QUEEN);
         currentState.add(tileView62);
 
-        SmartTileView tileView63 = new SmartTileView(f63.getContext() , player2 , whiteknight, this , "1G" , ChessPieceConstants.WHITE_KNIGHT);
+        SmartTileView tileView63 = new SmartTileView(f63.getContext(), player2, whiteknight, this, "1G", ChessPieceConstants.WHITE_KNIGHT);
         currentState.add(tileView63);
 
-        SmartTileView tileView64 = new SmartTileView(f64.getContext() , player1 , whiteRook, this , "1H" , ChessPieceConstants.WHITE_ROOK);
+        SmartTileView tileView64 = new SmartTileView(f64.getContext(), player1, whiteRook, this, "1H", ChessPieceConstants.WHITE_ROOK);
         currentState.add(tileView64);
 
 
@@ -592,7 +582,6 @@ public class MainActivity extends AppCompatActivity implements SmartTileView.Com
         f56.addView(tileView56);
 
 
-
         f57.addView(tileView57);
 
         f58.addView(tileView58);
@@ -604,70 +593,46 @@ public class MainActivity extends AppCompatActivity implements SmartTileView.Com
         f64.addView(tileView64);
 
 
-
-
-
     }
 
 
-    public Bitmap getBitmapByPieceName(String pieceName , Context context) {
+    public Bitmap getBitmapByPieceName(String pieceName, Context context) {
 
 
-        if( pieceName.equalsIgnoreCase("blackpawn")) {
-            return    BitmapFactory.decodeResource(context.getResources(), R.drawable.blackpawn);
+        if (pieceName.equalsIgnoreCase("blackpawn")) {
+            return BitmapFactory.decodeResource(context.getResources(), R.drawable.blackpawn);
 
-        }
+        } else if (pieceName.equalsIgnoreCase("whitepawn")) {
+            return BitmapFactory.decodeResource(context.getResources(), R.drawable.whitepawntiny);
 
-        else if(pieceName.equalsIgnoreCase("whitepawn")) {
-            return   BitmapFactory.decodeResource(context.getResources(), R.drawable.whitepawntiny);
+        } else if (pieceName.equalsIgnoreCase("blackbishop")) {
+            return BitmapFactory.decodeResource(context.getResources(), R.drawable.blackbishop);
 
-        }
+        } else if (pieceName.equalsIgnoreCase("whitebishop")) {
+            return BitmapFactory.decodeResource(context.getResources(), R.drawable.whitebishop);
 
-        else if(pieceName.equalsIgnoreCase("blackbishop")) {
-            return   BitmapFactory.decodeResource(context.getResources(), R.drawable.blackbishop);
+        } else if (pieceName.equalsIgnoreCase("whiteknight")) {
+            return BitmapFactory.decodeResource(context.getResources(), R.drawable.whiteknight);
 
-        }
+        } else if (pieceName.equalsIgnoreCase("whiteking")) {
+            return BitmapFactory.decodeResource(context.getResources(), R.drawable.whiteking);
 
-        else if(pieceName.equalsIgnoreCase("whitebishop")) {
-            return   BitmapFactory.decodeResource(context.getResources(), R.drawable.whitebishop);
+        } else if (pieceName.equalsIgnoreCase("whitequeen")) {
+            return BitmapFactory.decodeResource(context.getResources(), R.drawable.whitequeen);
 
-        }
-
-        else if(pieceName.equalsIgnoreCase("whiteknight")) {
-            return  BitmapFactory.decodeResource(context.getResources(), R.drawable.whiteknight);
-
-        }
-
-        else if(pieceName.equalsIgnoreCase("whiteking")) {
-            return  BitmapFactory.decodeResource(context.getResources(), R.drawable.whiteking);
-
-        }
-
-        else if(pieceName.equalsIgnoreCase("whitequeen")) {
-            return  BitmapFactory.decodeResource(context.getResources(), R.drawable.whitequeen);
-
-        }
-
-        else if(pieceName.equalsIgnoreCase("whiterook")) {
+        } else if (pieceName.equalsIgnoreCase("whiterook")) {
             return BitmapFactory.decodeResource(context.getResources(), R.drawable.whiterook);
-        }
+        } else if (pieceName.equalsIgnoreCase("blackrook")) {
+            return BitmapFactory.decodeResource(context.getResources(), R.drawable.blackrook);
 
-        else if(pieceName.equalsIgnoreCase("blackrook")) {
-            return  BitmapFactory.decodeResource(context.getResources(), R.drawable.blackrook);
-
-        }
-        else if(pieceName.equalsIgnoreCase("blackknight")) {
-            return  BitmapFactory.decodeResource(context.getResources(), R.drawable.blackknight);
-        }
-        else if(pieceName.equalsIgnoreCase("blackking")) {
-            return  BitmapFactory.decodeResource(context.getResources(), R.drawable.blackking);
-        }
-
-        else if(pieceName.equalsIgnoreCase("blackqueen")) {
+        } else if (pieceName.equalsIgnoreCase("blackknight")) {
+            return BitmapFactory.decodeResource(context.getResources(), R.drawable.blackknight);
+        } else if (pieceName.equalsIgnoreCase("blackking")) {
+            return BitmapFactory.decodeResource(context.getResources(), R.drawable.blackking);
+        } else if (pieceName.equalsIgnoreCase("blackqueen")) {
             return BitmapFactory.decodeResource(context.getResources(), R.drawable.blackqueen);
 
-        }
-        else {
+        } else {
             return null;
         }
 
@@ -680,13 +645,13 @@ public class MainActivity extends AppCompatActivity implements SmartTileView.Com
 
         currentMoves.add(smartTileView);
 
-        if(currentMoves.size() == 1) {
-            if(smartTileView.getPieceImage() == null) {
+        if (currentMoves.size() == 1) {
+            if (smartTileView.getPieceImage() == null) {
                 currentMoves.clear();
             }
         }
 
-        if(currentMoves.size() == 2) {
+        if (currentMoves.size() == 2) {
             // Perform Exchange
             performExchange();
 
@@ -701,29 +666,22 @@ public class MainActivity extends AppCompatActivity implements SmartTileView.Com
         SmartTileView view1 = null;
         SmartTileView view2 = null;
         int count = 0;
-        while(iterator.hasNext()) {
-                if( count == 0) {
-                    view1 = iterator.next();
-                    count++;
-                }
-                else {
-                    view2 = iterator.next();
+        while (iterator.hasNext()) {
+            if (count == 0) {
+                view1 = iterator.next();
+                count++;
+            } else {
+                view2 = iterator.next();
 
-                }
+            }
         }
-        if(view1.getPieceImage() != null ) {
+        if (view1.getPieceImage() != null) {
 
 
-
-            ChessAnalyzer.takeInMovesAndDetermineLegality( currentState , view1 , view2);
-
-
-
-
+            ChessAnalyzer.takeInMovesAndDetermineLegality(currentState, view1, view2);
 
 
         }
-
 
 
         currentMoves.clear();

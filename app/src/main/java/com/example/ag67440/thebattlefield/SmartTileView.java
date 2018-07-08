@@ -66,14 +66,14 @@ public class SmartTileView extends View {
     private CommunicateBackToActivity activity;
 
     interface CommunicateBackToActivity {
-        public void addMove(SmartTileView smartTileView) ;
+        public void addMove(SmartTileView smartTileView);
 
         public void performExchange();
 
 
     }
 
-    public SmartTileView(Context context , Paint boxPaint, Bitmap pieceImage , CommunicateBackToActivity activity , String positionNumber , String typeOfPiece) {
+    public SmartTileView(Context context, Paint boxPaint, Bitmap pieceImage, CommunicateBackToActivity activity, String positionNumber, String typeOfPiece) {
         super(context);
         this.pieceImage = pieceImage;
         rectf = new RectF(rect);
@@ -111,8 +111,8 @@ public class SmartTileView extends View {
 
             int action = MotionEventCompat.getActionMasked(event);
             Log.d("The BattleField", "Action " + event.toString());
-            if(event.getAction() == MotionEvent.ACTION_DOWN)
-            activity.addMove(this);
+            if (event.getAction() == MotionEvent.ACTION_DOWN)
+                activity.addMove(this);
             return true;
         }
         return result;
@@ -126,19 +126,16 @@ public class SmartTileView extends View {
         int width = canvas.getWidth();
 
 
-
-
-
         rect = new Rect(0, 0, width, canvas.getHeight());
         //canvas.drawColor(p);
 
         rectf = new RectF(rect);
         rectf2 = new RectF(rect2);
-        canvas.drawRect(rect , boxPaint);
-        canvas.drawRect(rect , g);
+        canvas.drawRect(rect, boxPaint);
+        canvas.drawRect(rect, g);
         //canvas.drawRoundRect(rectf2 , 40 , 40 , p);
 
-        if(pieceImage != null) {
+        if (pieceImage != null) {
 
             Bitmap thumbBitmap = ThumbnailUtils.extractThumbnail(pieceImage, 80, 80);
 
