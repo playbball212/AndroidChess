@@ -15,6 +15,11 @@ public class PawnAnalyzer implements PieceAnalyzer {
     public PawnAnalyzer(SmartTileView view1, SmartTileView view2) {
 
 
+        initializePawnAlphabet();
+
+    }
+
+    private void initializePawnAlphabet() {
         alphabetMapping.put("A", 0);
         alphabetMapping.put("B", 1);
         alphabetMapping.put("C", 2);
@@ -33,12 +38,22 @@ public class PawnAnalyzer implements PieceAnalyzer {
         alphabet.add("F");
         alphabet.add("G");
         alphabet.add("H");
-
     }
 
     @Override
     public boolean isThisALegalMove(SmartTileView view1, SmartTileView view2) {
 
+        return determineIfAttackingPawnIsWhiteOrBlack(view1, view2);
+
+    }
+
+    /**
+     * Based on the color return the Correct Pawn Analayzer
+     * @param view1
+     * @param view2
+     * @return
+     */
+    private boolean determineIfAttackingPawnIsWhiteOrBlack(SmartTileView view1, SmartTileView view2) {
         int positionNumber = Integer.valueOf(view1.getPositionNumber().substring(0, 1));
 
         if (view1.getTypeOfPiece().contains(ChessPieceConstants.WHITE)) {
@@ -46,116 +61,75 @@ public class PawnAnalyzer implements PieceAnalyzer {
         } else {
             return blackPawnAnalyzer(view1, view2, positionNumber);
         }
-
     }
 
     private boolean whitePawnAnalyzer(SmartTileView view1, SmartTileView view2, int positionNumber) {
         // Pawn is able to move two moves
         if (positionNumber == 2) {
 
-            String pos = view1.getPositionNumber();
-            String posLetter = view1.getPositionNumber().substring(1);
-
-
-            // This is a pawn Attack so therefore no need to move further
-            boolean pawnAttackSuccess = pawnAttack(ChessPieceConstants.BLACK, view1, view2);
-            if(pawnAttackSuccess) {
-                return true;
-            }
-
-            String validPiecePosition = "4" + posLetter;
-
-            String secondValidPiecePosition = "3" + posLetter;
-
-            if (view2.getPositionNumber().equalsIgnoreCase(validPiecePosition) || view2.getPositionNumber().equalsIgnoreCase(secondValidPiecePosition)) {
-                return true;
-            }
+            if (initalPawnPossibleTwoMoves(view1, view2)) return true;
 
         } else {
 
-            boolean pawnAttackSuc = pawnAttack(ChessPieceConstants.BLACK, view1, view2);
-            if(pawnAttackSuc) {
+            if (normalPawnMove(view1, view2)) return true;
+
+        }
+        return false;
+    }
+
+    private boolean normalPawnMove(SmartTileView view1, SmartTileView view2) {
+        boolean pawnAttackSuc = pawnAttack(ChessPieceConstants.BLACK, view1, view2);
+        if(pawnAttackSuc) {
+            return true;
+        }
+
+        // Vertical Movement should only contain empty piece in second view
+        String pos = view1.getPositionNumber().substring(1);
+        int numLetter = Integer.valueOf(view1.getPositionNumber().substring(0, 1));
+
+        String validPiecePosition = "" + (numLetter + 1) + pos;
+
+        if (view2.getPositionNumber().equalsIgnoreCase(validPiecePosition) && view2.getTypeOfPiece().contains(ChessPieceConstants.EMPTY_PIECE)) {
+
+
+            return true;
+
+
+        }
+        return false;
+    }
+
+    private boolean initalPawnPossibleTwoMoves(SmartTileView view1, SmartTileView view2) {
+        String pos = view1.getPositionNumber();
+        String posLetter = view1.getPositionNumber().substring(1);
+
+
+        // This is a pawn Attack so therefore no need to move further
+        boolean pawnAttackSuccess = pawnAttack(ChessPieceConstants.BLACK, view1, view2);
+        if(pawnAttackSuccess) {
+            return true;
+        }
+        // VERTICAL MOVEMENT UP SHOULD ONLY BE TO AN EMPTY PIECE
+        String validPiecePosition = "4" + posLetter;
+
+        String secondValidPiecePosition = "3" + posLetter;
+
+        if (view2.getPositionNumber().equalsIgnoreCase(validPiecePosition) || view2.getPositionNumber().equalsIgnoreCase(secondValidPiecePosition)) {
+            if(view2.getTypeOfPiece().contains(ChessPieceConstants.EMPTY_PIECE)) {
                 return true;
             }
-
-
-            String pos = view1.getPositionNumber().substring(1);
-            int numLetter = Integer.valueOf(view1.getPositionNumber().substring(0, 1));
-
-            String validPiecePosition = "" + (numLetter + 1) + pos;
-
-            if (view2.getPositionNumber().equalsIgnoreCase(validPiecePosition)) {
-
-
-                return true;
-
-
-            }
-
         }
         return false;
     }
 
     private boolean pawnAttack(String color, SmartTileView view1, SmartTileView view2) {
         // iF ATTACK LETTER TO LEFT AND RIGHT
+        return checkOppositeColorForAttack(color, view1, view2);
+    }
+
+    private boolean checkOppositeColorForAttack(String color, SmartTileView view1, SmartTileView view2) {
         if (view2.getTypeOfPiece().contains(color)) {
-
-            // Determine if distance is correct
-
-            // End Pawn can only have one attack
-            if (view1.getPositionNumber().contains("A") || view1.getPositionNumber().contains("H")) {
-
-                if (view1.getPositionNumber().contains("A")) {
-
-                    // Only valid Pawn attac k move would be to B and one ahead of its current position number
-                    int positionNumber = Integer.valueOf(view1.getPositionNumber().substring(0, 1));
-
-                    String validAttackLoc = (positionNumber + 1) + "B";
-
-                    if (view2.getPositionNumber().equalsIgnoreCase(validAttackLoc)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-
-
-                } else {
-
-                    // Only valid Pawn attac k move would be to B and one ahead of its current position number
-                    int positionNumber = Integer.valueOf(view1.getPositionNumber().substring(0, 1));
-
-                    String validAttackLoc = (positionNumber + 1) + "G";
-
-                    if (view2.getPositionNumber().equalsIgnoreCase(validAttackLoc)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-
-            } else {
-                int positionNumber = Integer.valueOf(view1.getPositionNumber().substring(0, 1));
-
-                int key = alphabetMapping.get(view1.getPositionNumber().substring(1));
-                int leftPos = positionNumber - 1;
-                int rightPos = positionNumber + 1;
-                String leftLetter = alphabet.get(leftPos);
-                String rightLetter = alphabet.get(rightPos);
-
-                if(color.equalsIgnoreCase(ChessPieceConstants.BLACK)) {
-                    leftLetter = rightPos + leftLetter ;
-                    rightLetter = rightPos + rightLetter  ;
-                }
-                else {
-                    leftLetter = leftPos + leftLetter  ;
-                    rightLetter = leftPos +rightLetter  ;
-                }
-                if (view2.getPositionNumber().equalsIgnoreCase(leftLetter) || view2.getPositionNumber().equalsIgnoreCase(rightLetter)) {
-                    return true;
-                }
-
-                return false;
-            }
+            return determineIfPawnsAreAtTheEnd(color, view1, view2);
 
 
         }
@@ -164,45 +138,129 @@ public class PawnAnalyzer implements PieceAnalyzer {
         }
     }
 
+    private boolean determineIfPawnsAreAtTheEnd(String color, SmartTileView view1, SmartTileView view2) {
+        // Determine if distance is correct
+
+        // End Pawn can only have one attack
+        if (view1.getPositionNumber().contains("A") || view1.getPositionNumber().contains("H")) {
+
+            if (view1.getPositionNumber().contains("A")) {
+                return pawnAPosAttack(color, view1, view2);
+
+
+            } else {
+                return pawnGPosAttack(view1, view2);
+
+
+            }
+
+        } else {
+            return normalPawnAttackBothSides(color, view1, view2);
+        }
+    }
+
+    private boolean normalPawnAttackBothSides(String color, SmartTileView view1, SmartTileView view2) {
+        int positionNumber = Integer.valueOf(view1.getPositionNumber().substring(0, 1));
+
+        int key = alphabetMapping.get(view1.getPositionNumber().substring(1));
+        int leftPos = positionNumber - 1;
+        int rightPos = positionNumber + 1;
+        String leftLetter = alphabet.get(key-1);
+        String rightLetter = alphabet.get(key+1);
+
+        if(color.equalsIgnoreCase(ChessPieceConstants.BLACK)) {
+            leftLetter = rightPos + leftLetter ;
+            rightLetter = rightPos + rightLetter  ;
+        }
+        else {
+            leftLetter = leftPos + leftLetter  ;
+            rightLetter = leftPos +rightLetter  ;
+        }
+        if (view2.getPositionNumber().equalsIgnoreCase(leftLetter) || view2.getPositionNumber().equalsIgnoreCase(rightLetter)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean pawnGPosAttack(SmartTileView view1, SmartTileView view2) {
+        // Only valid Pawn attack move would be to G and one ahead of its current position number
+        int positionNumber = Integer.valueOf(view1.getPositionNumber().substring(0, 1));
+
+        String validAttackLoc = (positionNumber + 1) + "G";
+
+        if (view2.getPositionNumber().equalsIgnoreCase(validAttackLoc)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean pawnAPosAttack(String color, SmartTileView view1, SmartTileView view2) {
+        // Only valid Pawn attac k move would be to B and one ahead of its current position number
+        int positionNumber = Integer.valueOf(view1.getPositionNumber().substring(0, 1));
+
+        String validAttackLoc = null;
+
+        if(color.equalsIgnoreCase("black"))   validAttackLoc = (positionNumber + 1) + "B";
+        else validAttackLoc = (positionNumber - 1) + "B";
+
+        if (view2.getPositionNumber().equalsIgnoreCase(validAttackLoc)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private boolean blackPawnAnalyzer(SmartTileView view1, SmartTileView view2, int positionNumber) {
         // Pawn is able to move two moves
         if (positionNumber == 7) {
 
-            boolean pawnAttackSuc = pawnAttack(ChessPieceConstants.WHITE, view1, view2);
-            if(pawnAttackSuc) {
-                return true;
-            }
-
-            String pos = view1.getPositionNumber();
-            String posLetter = view1.getPositionNumber().substring(1);
-
-            String validPiecePosition = "6" + posLetter;
-
-            String secondValidPiecePosition = "5" + posLetter;
-
-            if (view2.getPositionNumber().equalsIgnoreCase(validPiecePosition) || view2.getPositionNumber().equalsIgnoreCase(secondValidPiecePosition)) {
-                return true;
-            }
+            if (blackDoubleMovePossible(view1, view2)) return true;
 
         } else {
 
-            boolean pawnAttackSuc = pawnAttack(ChessPieceConstants.WHITE, view1, view2);
-            if(pawnAttackSuc) {
-                return true;
-            }
-            String pos = view1.getPositionNumber().substring(1);
-            int numLetter = Integer.valueOf(view1.getPositionNumber().substring(0, 1));
+            if (normalBlackMove(view1, view2)) return true;
 
-            String validPiecePosition = "" + (numLetter - 1) + pos;
+        }
+        return false;
+    }
 
-            if (view2.getPositionNumber().equalsIgnoreCase(validPiecePosition)) {
+    private boolean normalBlackMove(SmartTileView view1, SmartTileView view2) {
+        boolean pawnAttackSuc = pawnAttack(ChessPieceConstants.WHITE, view1, view2);
+        if(pawnAttackSuc) {
+            return true;
+        }
+        String pos = view1.getPositionNumber().substring(1);
+        int numLetter = Integer.valueOf(view1.getPositionNumber().substring(0, 1));
+
+        String validPiecePosition = "" + (numLetter - 1) + pos;
+
+        if (view2.getPositionNumber().equalsIgnoreCase(validPiecePosition)  && view2.getTypeOfPiece().contains(ChessPieceConstants.EMPTY_PIECE)) {
 
 
-                return true;
+            return true;
 
 
-            }
+        }
+        return false;
+    }
 
+    private boolean blackDoubleMovePossible(SmartTileView view1, SmartTileView view2) {
+        boolean pawnAttackSuc = pawnAttack(ChessPieceConstants.WHITE, view1, view2);
+        if(pawnAttackSuc) {
+            return true;
+        }
+
+        String pos = view1.getPositionNumber();
+        String posLetter = view1.getPositionNumber().substring(1);
+
+        String validPiecePosition = "6" + posLetter;
+
+        String secondValidPiecePosition = "5" + posLetter;
+
+        if (view2.getPositionNumber().equalsIgnoreCase(validPiecePosition) || view2.getPositionNumber().equalsIgnoreCase(secondValidPiecePosition)) {
+            return true;
         }
         return false;
     }
