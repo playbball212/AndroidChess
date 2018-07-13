@@ -2,7 +2,6 @@ package com.example.ag67440.thebattlefield;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -15,11 +14,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-
-import java.util.ArrayList;
-import java.util.logging.Logger;
-
-public class SmartTileView extends View {
+public class ChessTileView extends View {
     private Rect rect;
     private Rect rect2;
     private RectF rectf;
@@ -66,14 +61,14 @@ public class SmartTileView extends View {
     private CommunicateBackToActivity activity;
 
     interface CommunicateBackToActivity {
-        public void addMove(SmartTileView smartTileView);
+        public void addMove(ChessTileView chessTileView);
 
         public void performExchange();
 
 
     }
 
-    public SmartTileView(Context context, Paint boxPaint, Bitmap pieceImage, CommunicateBackToActivity activity, String positionNumber, String typeOfPiece) {
+    public ChessTileView(Context context, Paint boxPaint, Bitmap pieceImage, CommunicateBackToActivity activity, String positionNumber, String typeOfPiece) {
         super(context);
         this.pieceImage = pieceImage;
         rectf = new RectF(rect);
@@ -140,20 +135,8 @@ public class SmartTileView extends View {
             Bitmap thumbBitmap = ThumbnailUtils.extractThumbnail(pieceImage, 80, 80);
 
 
-//
-//        canvas.drawRoundRect(rectf, 40, 40, p);
             canvas.drawBitmap(thumbBitmap, 10f, 25f, p);
         }
-//        canvas.drawText("It's Smart" , 120F , 100f , g);
-//        canvas.drawText("You'll get interest rates grow with " , 50F , 150F , interestRateText);
-//        canvas.drawText("your balance" , 50F , 180F , interestRateText);
-//
-//
-//        canvas.drawRoundRect(rectf2, 40, 40, p);
-//        canvas.drawBitmap(safe , 80f , 350f , p);
-//        canvas.drawText("It's Simple" , 117F , 410F , g);
-//       canvas.drawText("Automatically save and track your money " , 80F , 450F , interestRateText);
-//       // canvas.drawText("your balance" , 50F , 180F , interestRateText);
 
 
     }

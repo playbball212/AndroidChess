@@ -1,4 +1,4 @@
-package com.example.ag67440.thebattlefield;
+package com.example.ag67440.thebattlefield.constants;
 
 public class ChessPieceConstants {
 
@@ -19,4 +19,5 @@ public class ChessPieceConstants {
     public static final String PAWN = "pawn";
     public static final String BLACK = "black";
     public static final String WHITE = "white";
+    public static final String BISHOP = "bishop";
 }

@@ -1,9 +1,11 @@
 package com.example.ag67440.thebattlefield;
 
+import java.util.List;
+
 interface PieceAnalyzer {
 
 
-    boolean isThisALegalMove(SmartTileView view1, SmartTileView view2);
+    boolean isThisALegalMove();
 
 
 }
