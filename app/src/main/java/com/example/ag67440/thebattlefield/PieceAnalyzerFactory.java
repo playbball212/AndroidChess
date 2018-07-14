@@ -6,7 +6,13 @@ import java.util.List;
 
 class PieceAnalyzerFactory {
 
-
+    /**
+     * Based on the First Piece
+     * @param currentState
+     * @param view1
+     * @param view2
+     * @return
+     */
     public static PieceAnalyzer createPieceAnalyzer(List<ChessTileView> currentState ,  ChessTileView view1, ChessTileView view2) {
 
 

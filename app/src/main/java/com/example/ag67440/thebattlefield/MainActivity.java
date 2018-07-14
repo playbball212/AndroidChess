@@ -497,7 +497,7 @@ public class MainActivity extends AppCompatActivity implements ChessTileView.Com
         currentState.add(tileView61);
 
         //
-        ChessTileView tileView62 = new ChessTileView(f62.getContext(), player1, whitebishop, this, "1F", ChessPieceConstants.WHITE_QUEEN);
+        ChessTileView tileView62 = new ChessTileView(f62.getContext(), player1, whitebishop, this, "1F", ChessPieceConstants.WHITE_BISHOP);
         currentState.add(tileView62);
 
         ChessTileView tileView63 = new ChessTileView(f63.getContext(), player2, whiteknight, this, "1G", ChessPieceConstants.WHITE_KNIGHT);

@@ -13,7 +13,7 @@ public class AlphabetMapper {
     }
 
     public  ArrayList<String> alphabet = new ArrayList<String>();
-
+    public ArrayList<Integer> validMoves = new ArrayList<Integer>();
 
     public HashMap<String, Integer> getAlphabetMapping() {
         return alphabetMapping;
@@ -31,6 +31,14 @@ public class AlphabetMapper {
         alphabetMapping.put("G", 6);
         alphabetMapping.put("H", 7);
 
+        validMoves.add(1);
+        validMoves.add(2);
+        validMoves.add(3);
+        validMoves.add(4);
+        validMoves.add(5);
+        validMoves.add(6);
+        validMoves.add(7);
+        validMoves.add(8);
 
         alphabet.add("A");
         alphabet.add("B");
