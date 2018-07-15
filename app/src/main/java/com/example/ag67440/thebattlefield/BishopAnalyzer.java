@@ -23,18 +23,15 @@ public class BishopAnalyzer extends AlphabetMapper implements PieceAnalyzer {
     @Override
     public boolean isThisALegalMove() {
 
-        // Determine Valid left Moves
-        if (view1.getTypeOfPiece().contains("white")) {
-            return analyzeWhiteBishop();
 
-        } else {
-            return false;
-        }
+            return analyzeBishop();
+
+
 
 
     }
 
-    private boolean analyzeWhiteBishop() {
+    private boolean analyzeBishop() {
 
         int positionNumber = Integer.valueOf(view1.getPositionNumber().substring(0, 1));
 
@@ -50,23 +47,57 @@ public class BishopAnalyzer extends AlphabetMapper implements PieceAnalyzer {
         analyzeLeftDiagonal(color);
 
         if (!foundPiece) {
-            analyzeRightDiagonal();
+            analyzeRightDiagonal(color);
         }
 
         return foundPiece;
     }
 
-    private boolean CheckIfMoveIsLegal() {
-        for (String possibleMoves : validMoves) {
 
-            if (view2.getPositionNumber().equalsIgnoreCase(possibleMoves)) {
-                return true;
+
+    private void analyzeRightDiagonal(String color) {
+
+        if (!view1.getPositionNumber().substring(1).equalsIgnoreCase("H")) {
+
+            // There is only a left diagonal move if the position is not on A
+            if (color.equalsIgnoreCase(ChessPieceConstants.WHITE)) {
+
+
+                if (Integer.valueOf(view1.getPositionNumber().substring(0, 1)) != 1) {
+
+                    // Check Up Diagonal
+                    rightDiagonalUpOrDownWhitePerspective(true);
+
+                    // Check Down Diagonal
+                    rightDiagonalUpOrDownWhitePerspective(false);
+
+
+                } else {
+                    rightDiagonalUpOrDownWhitePerspective(true);
+
+                }
+
+
+            } else if (color.equalsIgnoreCase(ChessPieceConstants.BLACK)) {
+
+
+                if (!view1.getPositionNumber().substring(1).equalsIgnoreCase("H")) {
+
+                    if (Integer.valueOf(view1.getPositionNumber().substring(0, 1)) != 8) {
+                        rightDiagonalUpOrDownBlackPerspective(true);
+
+
+                        rightDiagonalUpOrDownBlackPerspective(false);
+                    } else {
+                        rightDiagonalUpOrDownBlackPerspective(true);
+
+                    }
+
+                }
+
             }
-        }
-        return false;
-    }
 
-    private void analyzeRightDiagonal() {
+        }
     }
 
     private void analyzeLeftDiagonal(String color) {
@@ -80,9 +111,10 @@ public class BishopAnalyzer extends AlphabetMapper implements PieceAnalyzer {
 
                 if (Integer.valueOf(view1.getPositionNumber().substring(0, 1)) != 1) {
 
+                    // Check Up Diagonal
                     leftDiagonalUpOrDownWhitePerspective(true);
 
-
+                    // Check Down Diagonal 
                     leftDiagonalUpOrDownWhitePerspective(false);
 
 
@@ -98,12 +130,12 @@ public class BishopAnalyzer extends AlphabetMapper implements PieceAnalyzer {
                 if (!view1.getPositionNumber().substring(1).equalsIgnoreCase("A")) {
 
                     if (Integer.valueOf(view1.getPositionNumber().substring(0, 1)) != 8) {
-                        leftDiagonalUpOrDownWhitePerspective(true);
+                        leftDiagonalUpOrDownBlackPerspective(true);
 
 
                         leftDiagonalUpOrDownBlackPerspective(false);
                     } else {
-                        leftDiagonalUpOrDownWhitePerspective(true);
+                        leftDiagonalUpOrDownBlackPerspective(true);
 
                     }
 
@@ -133,6 +165,78 @@ public class BishopAnalyzer extends AlphabetMapper implements PieceAnalyzer {
                     numPosition++;
                 } else {
                     numPosition--;
+                }
+
+
+                String validMove = numPosition + alphabet.get(rangeLetter);
+                validMoves.add(validMove);
+                if (view2.getPositionNumber().equalsIgnoreCase(validMove)) {
+                    foundPiece = true;
+                    break;
+                } else {
+                    keepSearching = keepBuildingDiagonal(keepSearching, validMove);
+                }
+
+            } catch (Exception e) {
+                break;
+            }
+
+        }
+    }
+
+
+    private void rightDiagonalUpOrDownWhitePerspective(boolean upDiagonal) {
+
+        String currentPosition = view1.getPositionNumber();
+        String letter = view1.getPositionNumber().substring(1);
+        int rangeLetter = alphabetMapping.get(letter);
+        int numPosition = Integer.valueOf(currentPosition.substring(0, 1));
+        boolean keepSearching = true;
+        while (keepSearching) {
+            // There could be a bottom left move and a top left move
+            try {
+                rangeLetter++;
+                // Top Left increment pos and decrement letters
+                if (upDiagonal) {
+                    numPosition++;
+                } else {
+                    numPosition--;
+                }
+
+
+                String validMove = numPosition + alphabet.get(rangeLetter);
+                validMoves.add(validMove);
+                if (view2.getPositionNumber().equalsIgnoreCase(validMove)) {
+                    foundPiece = true;
+                    break;
+                } else {
+                    keepSearching = keepBuildingDiagonal(keepSearching, validMove);
+                }
+
+            } catch (Exception e) {
+                break;
+            }
+
+        }
+    }
+
+
+    private void rightDiagonalUpOrDownBlackPerspective(boolean upDiagonal) {
+
+        String currentPosition = view1.getPositionNumber();
+        String letter = view1.getPositionNumber().substring(1);
+        int rangeLetter = alphabetMapping.get(letter);
+        int numPosition = Integer.valueOf(currentPosition.substring(0, 1));
+        boolean keepSearching = true;
+        while (keepSearching) {
+            // There could be a bottom left move and a top left move
+            try {
+                rangeLetter++;
+                // Top Left increment pos and decrement letters
+                if (upDiagonal) {
+                    numPosition--;
+                } else {
+                    numPosition++;
                 }
 
 

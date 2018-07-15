@@ -1,6 +1,7 @@
 package com.example.ag67440.thebattlefield;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -119,6 +120,7 @@ public class ChessTileView extends View {
         super.onDraw(canvas);
         int height = canvas.getHeight();
         int width = canvas.getWidth();
+        int screenSize = Resources.getSystem().getDisplayMetrics().widthPixels;
 
 
         rect = new Rect(0, 0, width, canvas.getHeight());
@@ -132,8 +134,12 @@ public class ChessTileView extends View {
 
         if (pieceImage != null) {
 
-            Bitmap thumbBitmap = ThumbnailUtils.extractThumbnail(pieceImage, 80, 80);
+            Bitmap thumbBitmap = null;
 
+                if(screenSize <= 720)
+               thumbBitmap =    ThumbnailUtils.extractThumbnail(pieceImage, 80, 80);
+                else
+                    thumbBitmap = ThumbnailUtils.extractThumbnail(pieceImage, 150, 150);
 
             canvas.drawBitmap(thumbBitmap, 10f, 25f, p);
         }
