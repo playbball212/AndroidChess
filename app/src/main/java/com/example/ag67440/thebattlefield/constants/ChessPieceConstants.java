@@ -20,4 +20,5 @@ public class ChessPieceConstants {
     public static final String BLACK = "black";
     public static final String WHITE = "white";
     public static final String BISHOP = "bishop";
+    public static final String KNIGHT = "knight";
 }

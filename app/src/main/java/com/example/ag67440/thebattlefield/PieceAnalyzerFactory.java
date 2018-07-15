@@ -23,6 +23,10 @@ class PieceAnalyzerFactory {
             return new BishopAnalyzer(currentState , view1 , view2);
         }
 
+        else if(view1.getTypeOfPiece().contains(ChessPieceConstants.KNIGHT)) {
+            return new KnightAnalyzer( view1 , view2);
+        }
+
         return null;
     }
 
