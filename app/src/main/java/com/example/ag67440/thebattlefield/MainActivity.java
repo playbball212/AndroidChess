@@ -127,146 +127,13 @@ public class MainActivity extends AppCompatActivity implements ChessTileView.Com
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        f1 = (FrameLayout) findViewById(R.id.f1);
 
         player1 = new Paint();
         player1.setColor(Color.BLUE);
         player2 = new Paint();
         player2.setColor(Color.GREEN);
 
-
-        f2 = (FrameLayout) findViewById(R.id.f2);
-
-        f3 = (FrameLayout) findViewById(R.id.f3);
-
-        f4 = (FrameLayout) findViewById(R.id.f4);
-
-        f5 = (FrameLayout) findViewById(R.id.f5);
-
-        f6 = (FrameLayout) findViewById(R.id.f6);
-
-        f7 = (FrameLayout) findViewById(R.id.f7);
-
-        f8 = (FrameLayout) findViewById(R.id.f8);
-
-
-        f9 = (FrameLayout) findViewById(R.id.f9);
-
-        f10 = (FrameLayout) findViewById(R.id.f10);
-
-        f11 = (FrameLayout) findViewById(R.id.f11);
-
-        f12 = (FrameLayout) findViewById(R.id.f12);
-
-        f13 = (FrameLayout) findViewById(R.id.f13);
-
-        f14 = (FrameLayout) findViewById(R.id.f14);
-
-        f15 = (FrameLayout) findViewById(R.id.f15);
-
-        f16 = (FrameLayout) findViewById(R.id.f16);
-
-
-        f17 = (FrameLayout) findViewById(R.id.f17);
-
-        f18 = (FrameLayout) findViewById(R.id.f18);
-
-        f19 = (FrameLayout) findViewById(R.id.f19);
-
-        f20 = (FrameLayout) findViewById(R.id.f20);
-
-        f21 = (FrameLayout) findViewById(R.id.f21);
-
-        f22 = (FrameLayout) findViewById(R.id.f22);
-
-        f23 = (FrameLayout) findViewById(R.id.f23);
-
-        f24 = (FrameLayout) findViewById(R.id.f24);
-
-
-        f25 = (FrameLayout) findViewById(R.id.f25);
-
-        f26 = (FrameLayout) findViewById(R.id.f26);
-
-        f27 = (FrameLayout) findViewById(R.id.f27);
-
-        f28 = (FrameLayout) findViewById(R.id.f28);
-
-        f29 = (FrameLayout) findViewById(R.id.f29);
-
-        f30 = (FrameLayout) findViewById(R.id.f30);
-
-        f31 = (FrameLayout) findViewById(R.id.f31);
-
-        f32 = (FrameLayout) findViewById(R.id.f32);
-
-
-        f33 = (FrameLayout) findViewById(R.id.f33);
-
-        f34 = (FrameLayout) findViewById(R.id.f34);
-
-        f35 = (FrameLayout) findViewById(R.id.f35);
-
-        f36 = (FrameLayout) findViewById(R.id.f36);
-
-        f37 = (FrameLayout) findViewById(R.id.f37);
-
-        f38 = (FrameLayout) findViewById(R.id.f38);
-
-        f39 = (FrameLayout) findViewById(R.id.f39);
-
-        f40 = (FrameLayout) findViewById(R.id.f40);
-
-
-        f41 = (FrameLayout) findViewById(R.id.f41);
-
-        f42 = (FrameLayout) findViewById(R.id.f42);
-
-        f43 = (FrameLayout) findViewById(R.id.f43);
-
-        f44 = (FrameLayout) findViewById(R.id.f44);
-
-        f45 = (FrameLayout) findViewById(R.id.f45);
-
-        f46 = (FrameLayout) findViewById(R.id.f46);
-
-        f47 = (FrameLayout) findViewById(R.id.f47);
-
-        f48 = (FrameLayout) findViewById(R.id.f48);
-
-
-        f49 = (FrameLayout) findViewById(R.id.f49);
-
-        f50 = (FrameLayout) findViewById(R.id.f50);
-
-        f51 = (FrameLayout) findViewById(R.id.f51);
-
-        f52 = (FrameLayout) findViewById(R.id.f52);
-
-        f53 = (FrameLayout) findViewById(R.id.f53);
-
-        f54 = (FrameLayout) findViewById(R.id.f54);
-
-        f55 = (FrameLayout) findViewById(R.id.f55);
-
-        f56 = (FrameLayout) findViewById(R.id.f56);
-
-
-        f57 = (FrameLayout) findViewById(R.id.f57);
-
-        f58 = (FrameLayout) findViewById(R.id.f58);
-
-        f59 = (FrameLayout) findViewById(R.id.f59);
-
-        f60 = (FrameLayout) findViewById(R.id.f60);
-
-        f61 = (FrameLayout) findViewById(R.id.f61);
-
-        f62 = (FrameLayout) findViewById(R.id.f62);
-
-        f63 = (FrameLayout) findViewById(R.id.f63);
-
-        f64 = (FrameLayout) findViewById(R.id.f64);
+        initializeFrameLayouts();
 
 
         // Row 1 Black Rook
@@ -594,6 +461,143 @@ public class MainActivity extends AppCompatActivity implements ChessTileView.Com
         f64.addView(tileView64);
 
 
+    }
+
+    private void initializeFrameLayouts() {
+        f1 = (FrameLayout) findViewById(R.id.f1);
+
+        f2 = (FrameLayout) findViewById(R.id.f2);
+
+        f3 = (FrameLayout) findViewById(R.id.f3);
+
+        f4 = (FrameLayout) findViewById(R.id.f4);
+
+        f5 = (FrameLayout) findViewById(R.id.f5);
+
+        f6 = (FrameLayout) findViewById(R.id.f6);
+
+        f7 = (FrameLayout) findViewById(R.id.f7);
+
+        f8 = (FrameLayout) findViewById(R.id.f8);
+
+
+        f9 = (FrameLayout) findViewById(R.id.f9);
+
+        f10 = (FrameLayout) findViewById(R.id.f10);
+
+        f11 = (FrameLayout) findViewById(R.id.f11);
+
+        f12 = (FrameLayout) findViewById(R.id.f12);
+
+        f13 = (FrameLayout) findViewById(R.id.f13);
+
+        f14 = (FrameLayout) findViewById(R.id.f14);
+
+        f15 = (FrameLayout) findViewById(R.id.f15);
+
+        f16 = (FrameLayout) findViewById(R.id.f16);
+
+
+        f17 = (FrameLayout) findViewById(R.id.f17);
+
+        f18 = (FrameLayout) findViewById(R.id.f18);
+
+        f19 = (FrameLayout) findViewById(R.id.f19);
+
+        f20 = (FrameLayout) findViewById(R.id.f20);
+
+        f21 = (FrameLayout) findViewById(R.id.f21);
+
+        f22 = (FrameLayout) findViewById(R.id.f22);
+
+        f23 = (FrameLayout) findViewById(R.id.f23);
+
+        f24 = (FrameLayout) findViewById(R.id.f24);
+
+
+        f25 = (FrameLayout) findViewById(R.id.f25);
+
+        f26 = (FrameLayout) findViewById(R.id.f26);
+
+        f27 = (FrameLayout) findViewById(R.id.f27);
+
+        f28 = (FrameLayout) findViewById(R.id.f28);
+
+        f29 = (FrameLayout) findViewById(R.id.f29);
+
+        f30 = (FrameLayout) findViewById(R.id.f30);
+
+        f31 = (FrameLayout) findViewById(R.id.f31);
+
+        f32 = (FrameLayout) findViewById(R.id.f32);
+
+
+        f33 = (FrameLayout) findViewById(R.id.f33);
+
+        f34 = (FrameLayout) findViewById(R.id.f34);
+
+        f35 = (FrameLayout) findViewById(R.id.f35);
+
+        f36 = (FrameLayout) findViewById(R.id.f36);
+
+        f37 = (FrameLayout) findViewById(R.id.f37);
+
+        f38 = (FrameLayout) findViewById(R.id.f38);
+
+        f39 = (FrameLayout) findViewById(R.id.f39);
+
+        f40 = (FrameLayout) findViewById(R.id.f40);
+
+
+        f41 = (FrameLayout) findViewById(R.id.f41);
+
+        f42 = (FrameLayout) findViewById(R.id.f42);
+
+        f43 = (FrameLayout) findViewById(R.id.f43);
+
+        f44 = (FrameLayout) findViewById(R.id.f44);
+
+        f45 = (FrameLayout) findViewById(R.id.f45);
+
+        f46 = (FrameLayout) findViewById(R.id.f46);
+
+        f47 = (FrameLayout) findViewById(R.id.f47);
+
+        f48 = (FrameLayout) findViewById(R.id.f48);
+
+
+        f49 = (FrameLayout) findViewById(R.id.f49);
+
+        f50 = (FrameLayout) findViewById(R.id.f50);
+
+        f51 = (FrameLayout) findViewById(R.id.f51);
+
+        f52 = (FrameLayout) findViewById(R.id.f52);
+
+        f53 = (FrameLayout) findViewById(R.id.f53);
+
+        f54 = (FrameLayout) findViewById(R.id.f54);
+
+        f55 = (FrameLayout) findViewById(R.id.f55);
+
+        f56 = (FrameLayout) findViewById(R.id.f56);
+
+
+        f57 = (FrameLayout) findViewById(R.id.f57);
+
+        f58 = (FrameLayout) findViewById(R.id.f58);
+
+        f59 = (FrameLayout) findViewById(R.id.f59);
+
+        f60 = (FrameLayout) findViewById(R.id.f60);
+
+        f61 = (FrameLayout) findViewById(R.id.f61);
+
+        f62 = (FrameLayout) findViewById(R.id.f62);
+
+        f63 = (FrameLayout) findViewById(R.id.f63);
+
+        f64 = (FrameLayout) findViewById(R.id.f64);
     }
 
 
