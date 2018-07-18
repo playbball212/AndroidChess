@@ -8,7 +8,6 @@ import java.util.List;
 
 public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
 
-    private List<ChessTileView> currentState;
     private ChessTileView view1;
     private ChessTileView view2;
     private String letter;
@@ -17,8 +16,7 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
 
 
     public QueenAnalyzer(List<ChessTileView> currentState, ChessTileView view1, ChessTileView view2) {
-
-        this.currentState = currentState;
+        super(currentState);
         this.view1 = view1;
         this.letter = view1.getPositionNumber().substring(1);
         this.position = Integer.valueOf(view1.getPositionNumber().substring(0, 1));
@@ -199,24 +197,7 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
 
     }
 
-    private boolean checkCurrentState(int counter , String letter) {
-        for (ChessTileView tileView : currentState) {
 
-            if (tileView.getPositionNumber().equalsIgnoreCase(counter + letter)) {
-
-                if (tileView.getTypeOfPiece().equalsIgnoreCase(ChessPieceConstants.EMPTY_PIECE)) {
-                    return true;
-
-                } else {
-                    return false;
-                }
-            }
-
-
-        }
-
-        return false;
-    }
 
     private boolean upwardCheck(int counter) {
         if (counter > 8) {

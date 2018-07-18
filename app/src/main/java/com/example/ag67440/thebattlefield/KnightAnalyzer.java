@@ -1,5 +1,7 @@
 package com.example.ag67440.thebattlefield;
 
+import java.util.List;
+
 public class KnightAnalyzer extends AlphabetMapper implements PieceAnalyzer {
 
     private ChessTileView view1;
@@ -9,7 +11,8 @@ public class KnightAnalyzer extends AlphabetMapper implements PieceAnalyzer {
     private boolean foundPiece = false;
 
 
-    public KnightAnalyzer(ChessTileView view1, ChessTileView view2) {
+    public KnightAnalyzer(List<ChessTileView> currentState , ChessTileView view1, ChessTileView view2) {
+        super(currentState);
         this.view1 = view1;
         this.view2 = view2;
         posNumber = Integer.valueOf(view1.getPositionNumber().substring(0, 1));

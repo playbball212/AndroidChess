@@ -17,18 +17,26 @@ class PieceAnalyzerFactory {
 
 
         if (view1.getTypeOfPiece().contains(ChessPieceConstants.PAWN)) {
-            return new PawnAnalyzer(view1, view2);
+            return new PawnAnalyzer(currentState , view1, view2);
         }
         else if(view1.getTypeOfPiece().contains(ChessPieceConstants.BISHOP)) {
             return new BishopAnalyzer(currentState , view1 , view2);
         }
 
         else if(view1.getTypeOfPiece().contains(ChessPieceConstants.KNIGHT)) {
-            return new KnightAnalyzer( view1 , view2);
+            return new KnightAnalyzer( currentState , view1 , view2);
         }
 
         else if(view1.getTypeOfPiece().contains(ChessPieceConstants.QUEEN)) {
             return new QueenAnalyzer(currentState , view1 , view2);
+        }
+
+        else if(view1.getTypeOfPiece().contains(ChessPieceConstants.ROOK)) {
+            return new RookAnalyzer(currentState , view1, view2);
+        }
+
+        else if(view1.getTypeOfPiece().contains(ChessPieceConstants.KING)) {
+            return new KingAnalyzer(view1 , view2);
         }
 
         return null;

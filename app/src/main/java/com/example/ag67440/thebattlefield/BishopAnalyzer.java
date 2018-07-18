@@ -15,9 +15,12 @@ public class BishopAnalyzer extends AlphabetMapper implements PieceAnalyzer {
     private boolean foundPiece = false;
 
     public BishopAnalyzer(List<ChessTileView> chessTileViews, ChessTileView view1, ChessTileView view2) {
+        super(chessTileViews);
+
         this.view1 = view1;
         this.view2 = view2;
         this.currentState = chessTileViews;
+
     }
 
     @Override

@@ -1,16 +1,16 @@
 package com.example.ag67440.thebattlefield;
 
+import com.example.ag67440.thebattlefield.constants.ChessPieceConstants;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class AlphabetMapper {
 
-    private static AlphabetMapper instance = null;
 
 
-    public ArrayList<String> getAlphabet() {
-        return alphabet;
-    }
+    public List<ChessTileView> currentState;
 
     public  ArrayList<String> alphabet = new ArrayList<String>();
     public ArrayList<Integer> validMoves = new ArrayList<Integer>();
@@ -21,7 +21,7 @@ public class AlphabetMapper {
 
     public   HashMap<String, Integer> alphabetMapping = new HashMap<String, Integer>();
 
-    public AlphabetMapper() {
+    public AlphabetMapper(List<ChessTileView> currentState) {
         alphabetMapping.put("A", 0);
         alphabetMapping.put("B", 1);
         alphabetMapping.put("C", 2);
@@ -48,15 +48,30 @@ public class AlphabetMapper {
         alphabet.add("F");
         alphabet.add("G");
         alphabet.add("H");
+
+        this.currentState = currentState;
     }
 
 
-    public  AlphabetMapper getAlphabetMapper() {
-        if( instance == null) {
-            instance = new AlphabetMapper();
+    public boolean checkCurrentState(int counter , String letter) {
+        for (ChessTileView tileView : currentState) {
+
+            if (tileView.getPositionNumber().equalsIgnoreCase(counter + letter)) {
+
+                if (tileView.getTypeOfPiece().equalsIgnoreCase(ChessPieceConstants.EMPTY_PIECE)) {
+                    return true;
+
+                } else {
+                    return false;
+                }
+            }
+
 
         }
-       return instance;
+
+        return false;
     }
+
+
 
 }

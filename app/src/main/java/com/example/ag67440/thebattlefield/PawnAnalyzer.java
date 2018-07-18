@@ -13,8 +13,8 @@ public class PawnAnalyzer extends AlphabetMapper  implements PieceAnalyzer  {
     private ChessTileView view1;
     private ChessTileView view2;
 
-    public PawnAnalyzer(ChessTileView view1, ChessTileView view2) {
-
+    public PawnAnalyzer(List<ChessTileView> currentState , ChessTileView view1, ChessTileView view2) {
+        super(currentState);
         this.view1 = view1;
         this.view2 = view2;
 
