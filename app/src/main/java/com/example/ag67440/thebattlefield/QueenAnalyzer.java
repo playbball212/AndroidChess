@@ -30,31 +30,31 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
         // checkVerticalFile
         checkVerticalFileUpwardsDownwards(true);
 
-        if(!foundPiece)
+        if (!foundPiece)
 
             checkVerticalFileUpwardsDownwards(false);
 
-        if(!foundPiece)
+        if (!foundPiece)
 
             checkHorizontalFileLeftRight(true);
 
 
-        if(!foundPiece)
+        if (!foundPiece)
 
             checkHorizontalFileLeftRight(false);
-        if(!foundPiece)
+        if (!foundPiece)
             checkLeftDiagonalUpDown(true);
 
-        if(!foundPiece)
+        if (!foundPiece)
 
             checkLeftDiagonalUpDown(false);
 
-        if(!foundPiece)
+        if (!foundPiece)
 
 
             checkRightDiagonalUpDown(true);
 
-        if(!foundPiece)
+        if (!foundPiece)
 
             checkRightDiagonalUpDown(false);
 
@@ -66,8 +66,8 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
 
         int rangeNumber = alphabetMapping.get(letter);
         int counter = position;
-
-        while (true) {
+        boolean keepSearching = true;
+        while (keepSearching) {
 
             try {
                 if (b) {
@@ -80,10 +80,10 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
                 rangeNumber--;
                 if (view2.getPositionNumber().equalsIgnoreCase(counter + alphabet.get(rangeNumber))) {
                     foundPiece = true;
-                    break;
+                    keepSearching = false;
                 }
 
-                checkCurrentState(counter);
+                keepSearching = checkCurrentState(counter);
             } catch (Exception e) {
 
             }
@@ -94,8 +94,8 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
 
         int rangeNumber = alphabetMapping.get(letter);
         int counter = position;
-
-        while (true) {
+        boolean keepSearching = true;
+        while (keepSearching) {
 
             try {
                 if (up) {
@@ -108,10 +108,10 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
                 rangeNumber--;
                 if (view2.getPositionNumber().equalsIgnoreCase(counter + alphabet.get(rangeNumber))) {
                     foundPiece = true;
-                    break;
+                    keepSearching = false;
                 }
 
-                checkCurrentState(counter);
+                keepSearching = checkCurrentState(counter);
             } catch (Exception e) {
 
             }
@@ -123,20 +123,22 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
     private void checkHorizontalFileLeftRight(boolean b) {
 
         int rangeNumber = alphabetMapping.get(letter);
-
-        while (true) {
+        boolean keepSearching = true;
+        while (keepSearching) {
 
             try {
                 if (b)
                     rangeNumber--;
                 else
                     rangeNumber++;
+
+
                 if (view2.getPositionNumber().equalsIgnoreCase(position + alphabet.get(rangeNumber))) {
                     foundPiece = true;
-                    break;
+                    keepSearching = false;
                 }
 
-                checkCurrentState(position);
+                keepSearching = checkCurrentState(position);
             } catch (Exception e) {
 
             }
@@ -149,9 +151,9 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
     private void checkVerticalFileUpwardsDownwards(boolean upward) {
 
         int counter = position;
+        boolean keepSearching = true;
 
-
-        while (true) {
+        while (keepSearching) {
 
             if (upward) {
                 counter++;
@@ -161,10 +163,10 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
 
             try {
                 if (upward) {
-                    if (upwardCheck(counter)) break;
+                    keepSearching = upwardCheck(counter);
 
                 } else {
-                    downwardCheck(counter);
+                    keepSearching = downwardCheck(counter);
                 }
 
 
@@ -177,46 +179,51 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
 
     }
 
-    private void downwardCheck(int counter) {
+    private boolean downwardCheck(int counter) {
         if (counter < 1) {
-            foundPiece = false;
+            return false;
         } else {
             if (view2.getPositionNumber().equalsIgnoreCase(counter + letter)) {
                 foundPiece = true;
+                return false;
             }
 
-            checkCurrentState(counter);
+            return checkCurrentState(counter);
         }
+
+
     }
 
-    private void checkCurrentState(int counter) {
+    private boolean checkCurrentState(int counter) {
         for (ChessTileView tileView : currentState) {
 
             if (tileView.getPositionNumber().equalsIgnoreCase(counter + letter)) {
 
                 if (tileView.getTypeOfPiece().equalsIgnoreCase(ChessPieceConstants.EMPTY_PIECE)) {
-                    continue;
+                    return true;
 
                 } else {
-                    break;
+                    return false;
                 }
             }
 
 
         }
+
+        return false;
     }
 
     private boolean upwardCheck(int counter) {
         if (counter > 8) {
             return false;
         } else {
-            if (view1.getPositionNumber().equalsIgnoreCase(counter + letter)) {
+            if (view2.getPositionNumber().equalsIgnoreCase(counter + letter)) {
                 foundPiece = true;
-                return true;
+                return false;
             }
 
-            checkCurrentState(counter);
+            return checkCurrentState(counter);
         }
-        return false;
+
     }
 }
