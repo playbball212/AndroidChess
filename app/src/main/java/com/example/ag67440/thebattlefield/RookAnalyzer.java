@@ -36,11 +36,42 @@ public class RookAnalyzer extends AlphabetMapper implements PieceAnalyzer {
     @Override
     public boolean isThisALegalMove() {
 
-
+        // Upwards
         analyzeVerticalFile(true);
+        //Downwards
+        analyzeVerticalFile(false);
+
+        // Left
+        analyzeHorizontalFile(true);
+
+        // Right
+        analyzeHorizontalFile(false);
         return false;
     }
 
+    private void analyzeHorizontalFile(boolean b) {
+        int rangeNumber = alphabetMapping.get(letter);
+        boolean keepSearching = true;
+        while (keepSearching) {
+
+            if(b)
+            rangeNumber--;
+            else
+                rangeNumber++;
+            try {
+                    if(view2.getPositionNumber().equalsIgnoreCase(position + alphabet.get(rangeNumber) )) {
+                            foundPiece = true;
+                            keepSearching = false;
+                    }
+
+                    else {
+                        keepSearching = checkCurrentState(position , alphabet.get(rangeNumber));
+                    }
+            } catch (Exception e) {
+                    keepSearching = false;
+            }
+        }
+    }
 
 
     private void analyzeVerticalFile(boolean upwards) {
@@ -49,18 +80,17 @@ public class RookAnalyzer extends AlphabetMapper implements PieceAnalyzer {
         while (keepSearching) {
 
             try {
-                if(upwards) {
+                if (upwards) {
 
-                    if(color.equalsIgnoreCase(ChessPieceConstants.WHITE))
-                    counter++;
+                    if (color.equalsIgnoreCase(ChessPieceConstants.WHITE))
+                        counter++;
 
                     else
                         counter--;
 
-                }
-                else {
+                } else {
 
-                    if(color.equalsIgnoreCase(ChessPieceConstants.WHITE))
+                    if (color.equalsIgnoreCase(ChessPieceConstants.WHITE))
                         counter--;
                     else
                         counter++;
@@ -70,9 +100,8 @@ public class RookAnalyzer extends AlphabetMapper implements PieceAnalyzer {
                 if (view2.getPositionNumber().equalsIgnoreCase(counter + letter)) {
                     foundPiece = true;
                     keepSearching = false;
-                }
-                else {
-                    checkCurrentState(counter , letter );
+                } else {
+                    keepSearching = checkCurrentState(counter, letter);
                 }
 
 
