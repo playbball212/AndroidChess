@@ -1,5 +1,7 @@
 package com.example.ag67440.thebattlefield;
 
+import android.util.Log;
+
 import com.example.ag67440.thebattlefield.constants.ChessPieceConstants;
 
 import java.util.List;
@@ -72,20 +74,22 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
             try {
                 if (b) {
                     counter++;
-                    rangeNumber++;
                 } else {
                     counter--;
-                    rangeNumber++;
                 }
-                rangeNumber--;
+                rangeNumber++;
+
                 if (view2.getPositionNumber().equalsIgnoreCase(counter + alphabet.get(rangeNumber))) {
                     foundPiece = true;
                     keepSearching = false;
                 }
-
-                keepSearching = checkCurrentState(counter);
+                else {
+                    keepSearching = checkCurrentState(counter , alphabet.get(rangeNumber));
+                }
             } catch (Exception e) {
+                Log.d("Error" , "CHESS ERROR");
 
+                keepSearching = false;
             }
         }
     }
@@ -100,20 +104,20 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
             try {
                 if (up) {
                     counter++;
-                    rangeNumber--;
                 } else {
                     counter--;
-                    rangeNumber--;
                 }
                 rangeNumber--;
                 if (view2.getPositionNumber().equalsIgnoreCase(counter + alphabet.get(rangeNumber))) {
                     foundPiece = true;
                     keepSearching = false;
                 }
-
-                keepSearching = checkCurrentState(counter);
+                else {
+                    keepSearching = checkCurrentState(counter , alphabet.get(rangeNumber));
+                }
             } catch (Exception e) {
-
+                Log.d("Error" , "CHESS ERROR");
+                keepSearching = false;
             }
         }
 
@@ -137,10 +141,11 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
                     foundPiece = true;
                     keepSearching = false;
                 }
-
-                keepSearching = checkCurrentState(position);
+                else {
+                    keepSearching = checkCurrentState(position , alphabet.get(rangeNumber));
+                }
             } catch (Exception e) {
-
+                keepSearching = false;
             }
 
         }
@@ -171,7 +176,7 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
 
 
             } catch (Exception e) {
-                break;
+                keepSearching = false;
             }
 
         }
@@ -188,13 +193,13 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
                 return false;
             }
 
-            return checkCurrentState(counter);
+            return checkCurrentState(counter , letter);
         }
 
 
     }
 
-    private boolean checkCurrentState(int counter) {
+    private boolean checkCurrentState(int counter , String letter) {
         for (ChessTileView tileView : currentState) {
 
             if (tileView.getPositionNumber().equalsIgnoreCase(counter + letter)) {
@@ -222,7 +227,7 @@ public class QueenAnalyzer extends AlphabetMapper implements PieceAnalyzer {
                 return false;
             }
 
-            return checkCurrentState(counter);
+            return checkCurrentState(counter , letter);
         }
 
     }
