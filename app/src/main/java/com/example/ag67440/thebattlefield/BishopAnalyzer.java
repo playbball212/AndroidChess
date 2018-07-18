@@ -66,14 +66,14 @@ public class BishopAnalyzer extends AlphabetMapper implements PieceAnalyzer {
                 if (Integer.valueOf(view1.getPositionNumber().substring(0, 1)) != 1) {
 
                     // Check Up Diagonal
-                    rightDiagonalUpOrDownWhitePerspective(true);
+                    rightDiagonalUpOrDownPerspective(true , ChessPieceConstants.WHITE);
 
                     // Check Down Diagonal
-                    rightDiagonalUpOrDownWhitePerspective(false);
+                    rightDiagonalUpOrDownPerspective(false , ChessPieceConstants.WHITE);
 
 
                 } else {
-                    rightDiagonalUpOrDownWhitePerspective(true);
+                    rightDiagonalUpOrDownPerspective(true , ChessPieceConstants.WHITE);
 
                 }
 
@@ -84,12 +84,12 @@ public class BishopAnalyzer extends AlphabetMapper implements PieceAnalyzer {
                 if (!view1.getPositionNumber().substring(1).equalsIgnoreCase("H")) {
 
                     if (Integer.valueOf(view1.getPositionNumber().substring(0, 1)) != 8) {
-                        rightDiagonalUpOrDownBlackPerspective(true);
+                        rightDiagonalUpOrDownPerspective(true ,ChessPieceConstants.BLACK) ;
 
 
-                        rightDiagonalUpOrDownBlackPerspective(false);
+                        rightDiagonalUpOrDownPerspective(false , ChessPieceConstants.BLACK);
                     } else {
-                        rightDiagonalUpOrDownBlackPerspective(true);
+                        rightDiagonalUpOrDownPerspective(true , ChessPieceConstants.BLACK);
 
                     }
 
@@ -112,14 +112,14 @@ public class BishopAnalyzer extends AlphabetMapper implements PieceAnalyzer {
                 if (Integer.valueOf(view1.getPositionNumber().substring(0, 1)) != 1) {
 
                     // Check Up Diagonal
-                    leftDiagonalUpOrDownWhitePerspective(true);
+                    leftDiagonalUpOrDownPerspective(true , ChessPieceConstants.WHITE);
 
                     // Check Down Diagonal 
-                    leftDiagonalUpOrDownWhitePerspective(false);
+                    leftDiagonalUpOrDownPerspective(false , ChessPieceConstants.WHITE);
 
 
                 } else {
-                    leftDiagonalUpOrDownWhitePerspective(true);
+                    leftDiagonalUpOrDownPerspective(true , ChessPieceConstants.WHITE);
 
                 }
 
@@ -130,12 +130,12 @@ public class BishopAnalyzer extends AlphabetMapper implements PieceAnalyzer {
                 if (!view1.getPositionNumber().substring(1).equalsIgnoreCase("A")) {
 
                     if (Integer.valueOf(view1.getPositionNumber().substring(0, 1)) != 8) {
-                        leftDiagonalUpOrDownBlackPerspective(true);
+                        leftDiagonalUpOrDownPerspective(true , ChessPieceConstants.BLACK);
 
 
-                        leftDiagonalUpOrDownBlackPerspective(false);
+                        leftDiagonalUpOrDownPerspective(false , ChessPieceConstants.BLACK);
                     } else {
-                        leftDiagonalUpOrDownBlackPerspective(true);
+                        leftDiagonalUpOrDownPerspective(true , ChessPieceConstants.BLACK);
 
                     }
 
@@ -149,7 +149,7 @@ public class BishopAnalyzer extends AlphabetMapper implements PieceAnalyzer {
 
     }
 
-    private void leftDiagonalUpOrDownWhitePerspective(boolean upDiagonal) {
+    private void leftDiagonalUpOrDownPerspective(boolean upDiagonal , String color) {
 
         String currentPosition = view1.getPositionNumber();
         String letter = view1.getPositionNumber().substring(1);
@@ -162,9 +162,17 @@ public class BishopAnalyzer extends AlphabetMapper implements PieceAnalyzer {
                 rangeLetter--;
                 // Top Left increment pos and decrement letters
                 if (upDiagonal) {
-                    numPosition++;
+
+                    if(color.equalsIgnoreCase(ChessPieceConstants.WHITE))
+                        numPosition++;
+                    else
+                        numPosition--;
                 } else {
-                    numPosition--;
+
+                    if(color.equalsIgnoreCase(ChessPieceConstants.WHITE))
+                         numPosition--;
+                    else
+                        numPosition++;
                 }
 
 
@@ -185,7 +193,7 @@ public class BishopAnalyzer extends AlphabetMapper implements PieceAnalyzer {
     }
 
 
-    private void rightDiagonalUpOrDownWhitePerspective(boolean upDiagonal) {
+    private void rightDiagonalUpOrDownPerspective(boolean upDiagonal , String color) {
 
         String currentPosition = view1.getPositionNumber();
         String letter = view1.getPositionNumber().substring(1);
@@ -197,10 +205,21 @@ public class BishopAnalyzer extends AlphabetMapper implements PieceAnalyzer {
             try {
                 rangeLetter++;
                 // Top Left increment pos and decrement letters
-                if (upDiagonal) {
+                if (upDiagonal ) {
+
+
+                    if(color.equalsIgnoreCase("white"))
                     numPosition++;
+                    else
+                        numPosition--;
+
+
                 } else {
+
+                    if(color.equalsIgnoreCase("white"))
                     numPosition--;
+                    else
+                        numPosition++;
                 }
 
 
@@ -221,84 +240,10 @@ public class BishopAnalyzer extends AlphabetMapper implements PieceAnalyzer {
     }
 
 
-    private void rightDiagonalUpOrDownBlackPerspective(boolean upDiagonal) {
-
-        String currentPosition = view1.getPositionNumber();
-        String letter = view1.getPositionNumber().substring(1);
-        int rangeLetter = alphabetMapping.get(letter);
-        int numPosition = Integer.valueOf(currentPosition.substring(0, 1));
-        boolean keepSearching = true;
-        while (keepSearching) {
-            // There could be a bottom left move and a top left move
-            try {
-                rangeLetter++;
-                // Top Left increment pos and decrement letters
-                if (upDiagonal) {
-                    numPosition--;
-                } else {
-                    numPosition++;
-                }
 
 
-                String validMove = numPosition + alphabet.get(rangeLetter);
-                validMoves.add(validMove);
-                if (view2.getPositionNumber().equalsIgnoreCase(validMove)) {
-                    foundPiece = true;
-                    break;
-                } else {
-                    keepSearching = keepBuildingDiagonal(keepSearching, validMove);
-                }
-
-            } catch (Exception e) {
-                break;
-            }
-
-        }
-    }
 
 
-    /**
-     * This method will analyze either the upper half or bottom half of the diagonal to determine
-     * if move is legal. If while searching either half we encounter a piece that is not empty then
-     * we need to stop the search and conclude the valid moves for the particular side
-     *
-     * @param upDiagonal
-     */
-    private void leftDiagonalUpOrDownBlackPerspective(boolean upDiagonal) {
-
-        String currentPosition = view1.getPositionNumber();
-        String letter = view1.getPositionNumber().substring(1);
-        int rangeLetter = alphabetMapping.get(letter);
-        int numPosition = Integer.valueOf(currentPosition.substring(0, 1));
-        boolean keepSearching = true;
-        while (keepSearching) {
-            // There could be a bottom left move and a top left move
-            try {
-                rangeLetter--;
-                // Top Left increment pos and decrement letters
-                if (upDiagonal) {
-                    numPosition--;
-                } else {
-                    numPosition++;
-                }
-
-
-                String validMove = numPosition + alphabet.get(rangeLetter);
-                validMoves.add(validMove);
-                if (view2.getPositionNumber().equalsIgnoreCase(validMove)) {
-                    foundPiece = true;
-                    break;
-                } else {
-
-                    keepSearching = keepBuildingDiagonal(keepSearching, validMove);
-                }
-
-            } catch (Exception e) {
-                break;
-            }
-
-        }
-    }
 
     /**
      * If the validMove is not the move intended check if it is not empty destroying the diagonal if not empty

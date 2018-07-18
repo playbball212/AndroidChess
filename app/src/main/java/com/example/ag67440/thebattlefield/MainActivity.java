@@ -683,9 +683,11 @@ public class MainActivity extends AppCompatActivity implements ChessTileView.Com
 
             }
         }
+
+        // Check if First Tile is Empty then bypass
         if (view1.getPieceImage() != null) {
 
-
+            // Check if it was the right turn
             if (isTheCorrectPlayerMoving(view1, view2)) {
 
 
