@@ -24,6 +24,13 @@ public class KnightAnalyzer extends AlphabetMapper implements PieceAnalyzer {
         // A valid move could be position
         checkTopLeftMove();
 
+        analyzeDifferentPositions();
+
+
+        return foundPiece;
+    }
+
+    private void analyzeDifferentPositions() {
         if (!foundPiece)
             checkTopRightMove();
 
@@ -46,9 +53,6 @@ public class KnightAnalyzer extends AlphabetMapper implements PieceAnalyzer {
 
         if (!foundPiece)
             checkSideLeftBottomMove();
-
-
-        return foundPiece;
     }
 
     private void checkSideLeftBottomMove() {

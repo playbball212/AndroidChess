@@ -27,6 +27,10 @@ class PieceAnalyzerFactory {
             return new KnightAnalyzer( view1 , view2);
         }
 
+        else if(view1.getTypeOfPiece().contains(ChessPieceConstants.QUEEN)) {
+            return new QueenAnalyzer(currentState , view1 , view2);
+        }
+
         return null;
     }
 
