@@ -136,12 +136,12 @@ public class ChessTileView extends View {
 
             Bitmap thumbBitmap = null;
 
-                if(screenSize <= 720)
-               thumbBitmap =    ThumbnailUtils.extractThumbnail(pieceImage, 80, 80);
-                else
-                    thumbBitmap = ThumbnailUtils.extractThumbnail(pieceImage, 150, 150);
+            if (screenSize <= 720)
+                thumbBitmap = ThumbnailUtils.extractThumbnail(pieceImage, 80, 80);
+            else
+                thumbBitmap = ThumbnailUtils.extractThumbnail(pieceImage, 130, 130);
 
-            canvas.drawBitmap(thumbBitmap, 10f, 25f, p);
+            canvas.drawBitmap(thumbBitmap, 5f, 25f, p);
         }
 
 
